@@ -33,6 +33,8 @@ ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
     'http://66.116.232.40:5173'
+    'http://clickmart.jensonmit.com',
+    'https://clickmart.jensonmit.com',
 ]
 
 # Application definition
