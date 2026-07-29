@@ -1,0 +1,23 @@
+name: Auto Deploy to BigRock
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.BIGROCK_HOST }}
+          username: ${{ secrets.BIGROCK_USER }}
+          key: ${{ secrets.BIGROCK_SSH_KEY }}
+          script: |
+            cd /opt/clickmart_docker
+            git pull origin main
+            docker compose up --build -d
+
